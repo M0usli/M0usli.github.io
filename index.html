@@ -68,8 +68,10 @@
       transition: transform .15s ease, background .15s ease, color .15s ease;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-    .btn-primary:hover { background: #e94a12; border-color: #e94a12; }
+    .btn-primary { background: var(--ink); border-color: var(--ink); color: var(--dark-ink); }
+    .btn-primary:hover { background: #3d3030; border-color: #3d3030; }
+    .cta .btn-primary { background: var(--dark-ink); border-color: var(--dark-ink); color: var(--ink); }
+    .cta .btn-primary:hover { background: #ece4dc; border-color: #ece4dc; }
     .btn-ghost { background: transparent; color: var(--ink); }
     .btn-ghost:hover { background: var(--ink); color: var(--bg); }
     .btn-sm { padding: 8px 16px; font-size: .9rem; }
@@ -138,9 +140,8 @@
     .project-tag { font-size: .8rem; font-weight: 700; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
     .project h3 { font-size: 1.9rem; letter-spacing: -.025em; margin: 0 0 14px; line-height: 1.15; }
     .project p { color: var(--ink-soft); margin: 0 0 20px; }
-    .checks { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 10px; }
-    .checks li { display: flex; gap: 10px; align-items: flex-start; }
-    .checks svg { flex-shrink: 0; margin-top: 4px; color: var(--accent); }
+    .checks { list-style: disc; padding-left: 20px; margin: 0 0 24px; display: grid; gap: 8px; }
+    .checks li::marker { color: var(--ink-soft); }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
     .chip { font-size: .8rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; background: var(--bg-alt); color: var(--ink-soft); border: 1px solid var(--line); }
     .project-body .btn { align-self: flex-start; margin-top: auto; }
@@ -258,7 +259,6 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow"><span class="dot"></span>BSc Computer Science &middot; Western University &middot; Graduating Dec 2026</div>
     <h1>Hi, I'm Omar. I work in <span class="hl">business analysis and software engineering.</span></h1>
     <p class="lead">I'm a Computer Science student in London, Ontario. I've interned as a business analyst at Deloitte and as a software engineering intern at Sitech, and I build full-stack projects in my spare time.</p>
     <div class="hero-cta">
@@ -319,9 +319,9 @@
         <h3>SplitPay: wallet &amp; bill-split app</h3>
         <p>A web app where roommates scan a receipt, split it item by item, and pay each other from a wallet.</p>
         <ul class="checks">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reads receipt photos with OpenCV, Tesseract OCR and an LLM</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Double-entry ledger, idempotent payments and simulated KYC limits</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>67 REST endpoints and 888 automated tests in CI</li>
+          <li>Reads receipt photos with OpenCV, Tesseract OCR and an LLM</li>
+          <li>Double-entry ledger, idempotent payments and simulated KYC limits</li>
+          <li>67 REST endpoints and 888 automated tests in CI</li>
         </ul>
         <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
         <a href="https://github.com/M0usli/splitpay" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
@@ -345,9 +345,9 @@
         <h3>Cite: research assistant with sources</h3>
         <p>An agentic research assistant where each answer links back to the source it came from.</p>
         <ul class="checks">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tool-use loop written by hand on the Claude API</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Document search with pgvector in PostgreSQL</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>FastAPI back end with a Next.js interface</li>
+          <li>Tool-use loop written by hand on the Claude API</li>
+          <li>Document search with pgvector in PostgreSQL</li>
+          <li>FastAPI back end with a Next.js interface</li>
         </ul>
         <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">pgvector</span><span class="chip">Next.js</span><span class="chip">LLMs</span></div>
         <a href="https://github.com/M0usli/cite-agent" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
@@ -372,9 +372,9 @@
         <h3>Barber shop booking system</h3>
         <p>A self-serve booking site for a local barber shop that replaced booking by phone.</p>
         <ul class="checks">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Interviewed the owner and mapped the existing booking process</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wrote a BRD with 8+ user stories, then built it in React and Firebase</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Booking takes under 2 minutes instead of about 10</li>
+          <li>Interviewed the owner and mapped the existing booking process</li>
+          <li>Wrote a BRD with 8+ user stories, then built it in React and Firebase</li>
+          <li>Booking takes under 2 minutes instead of about 10</li>
         </ul>
         <div class="chips"><span class="chip">React</span><span class="chip">Firebase</span><span class="chip">BRD</span><span class="chip">UAT</span></div>
       </div>
