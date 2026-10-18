@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Omar Mousli</title>
+  <meta name="description" content="Omar Mousli: Computer Science student at Western University with experience in business analysis (Deloitte) and software engineering (Sitech).">
+  <meta property="og:title" content="Omar Mousli">
+  <meta property="og:description" content="Computer Science, Western University (Dec 2026). Business analysis and software engineering.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23201515'/><text x='32' y='43' font-family='Arial' font-weight='700' font-size='28' fill='%23ff5a1f' text-anchor='middle'>OM</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fffdf9;
+      --bg-alt: #f7f3ec;
+      --surface: #ffffff;
+      --ink: #201515;
+      --ink-soft: #3d3535;
+      --muted: #6b6461;
+      --line: #e9e2d8;
+      --accent: #ff5a1f;
+      --accent-ink: #ffffff;
+      --accent-soft: #fff0e8;
+      --dark: #201515;
+      --dark-ink: #fffdf9;
+      --dark-muted: #bfb6b1;
+      --radius: 16px;
+      --shadow: 0 1px 2px rgba(32,21,21,.04), 0 8px 24px rgba(32,21,21,.06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,253,249,.88);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.1rem; letter-spacing: -.01em; }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: var(--ink); color: var(--accent);
+      display: grid; place-items: center; font-size: .8rem; font-weight: 800;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; font-weight: 500; font-size: .95rem; color: var(--ink-soft); }
+    .nav-links a:not(.btn):hover { color: var(--accent); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 999px;
+      font-weight: 600; font-size: .95rem;
+      border: 1.5px solid var(--ink);
+      transition: transform .15s ease, background .15s ease, color .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+    .btn-primary:hover { background: #e94a12; border-color: #e94a12; }
+    .btn-ghost { background: transparent; color: var(--ink); }
+    .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+    .btn-sm { padding: 8px 16px; font-size: .9rem; }
+
+    /* Hero */
+    .hero { padding: 96px 0 72px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-soft); color: #c2410c;
+      font-weight: 600; font-size: .85rem;
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 24px;
+    }
+    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,90,31,.18); }
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      line-height: 1.04; letter-spacing: -.035em; font-weight: 800;
+      margin: 0 0 24px; max-width: 900px;
+    }
+    .hero h1 .hl { color: var(--accent); }
+    .hero p.lead { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--ink-soft); max-width: 680px; margin: 0 0 36px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* Stats */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--surface); box-shadow: var(--shadow);
+      margin-top: 72px; overflow: hidden;
+    }
+    .stat { padding: 28px 24px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat .num { font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+    .stat .num span { color: var(--accent); }
+    .stat .label { color: var(--muted); font-size: .9rem; margin-top: 8px; }
+
+    /* Sections */
+    section { padding: 96px 0; }
+    section.alt { background: var(--bg-alt); }
+    .section-head { max-width: 680px; margin-bottom: 48px; }
+    .kicker { color: var(--accent); font-weight: 700; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -.03em; margin: 0 0 16px; font-weight: 800; }
+    .section-head p { color: var(--ink-soft); font-size: 1.1rem; margin: 0; }
+
+    /* Focus areas */
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pillar {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow);
+    }
+    .icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--accent-soft); color: var(--accent);
+      display: grid; place-items: center; margin-bottom: 20px;
+    }
+    .pillar h3 { font-size: 1.2rem; margin: 0 0 10px; letter-spacing: -.01em; }
+    .pillar p { margin: 0; color: var(--ink-soft); }
+
+    /* Projects */
+    .project {
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: 0;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .project-body { padding: 44px; display: flex; flex-direction: column; }
+    .project-tag { font-size: .8rem; font-weight: 700; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    .project h3 { font-size: 1.9rem; letter-spacing: -.025em; margin: 0 0 14px; line-height: 1.15; }
+    .project p { color: var(--ink-soft); margin: 0 0 20px; }
+    .checks { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 10px; }
+    .checks li { display: flex; gap: 10px; align-items: flex-start; }
+    .checks svg { flex-shrink: 0; margin-top: 4px; color: var(--accent); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .chip { font-size: .8rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; background: var(--bg-alt); color: var(--ink-soft); border: 1px solid var(--line); }
+    .project-body .btn { align-self: flex-start; margin-top: auto; }
+
+    .project-visual { background: var(--dark); padding: 40px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .project-visual::before {
+      content: ""; position: absolute; width: 360px; height: 360px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,90,31,.35), transparent 70%);
+      top: -80px; right: -80px;
+    }
+    .window {
+      position: relative; width: 100%; max-width: 420px;
+      background: #2c2222; border: 1px solid #3d3030; border-radius: 14px;
+      box-shadow: 0 24px 48px rgba(0,0,0,.35); overflow: hidden;
+      font-size: .85rem; color: var(--dark-ink);
+    }
+    .window-bar { display: flex; gap: 6px; padding: 12px 14px; border-bottom: 1px solid #3d3030; }
+    .window-bar i { width: 10px; height: 10px; border-radius: 50%; background: #4d3f3f; }
+    .window-bar i:first-child { background: var(--accent); }
+    .window-body { padding: 20px; display: grid; gap: 12px; }
+    .row { display: flex; justify-content: space-between; align-items: center; background: #362a2a; border-radius: 10px; padding: 12px 14px; }
+    .row .k { color: var(--dark-muted); }
+    .row .v { font-weight: 700; }
+    .row .v.ok { color: #6ee7a8; }
+    .row .v.acc { color: var(--accent); }
+    .mono { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: .8rem; color: var(--dark-muted); line-height: 1.7; }
+    .mono b { color: var(--accent); font-weight: 600; }
+    .mono .s { color: #6ee7a8; }
+
+    /* Experience */
+    .timeline { display: grid; gap: 20px; }
+    .job {
+      display: grid; grid-template-columns: 240px 1fr; gap: 32px;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 36px; box-shadow: var(--shadow);
+    }
+    .job-meta .co { font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; }
+    .job-meta .title { color: var(--accent); font-weight: 600; margin: 4px 0 8px; }
+    .job-meta .when { color: var(--muted); font-size: .9rem; }
+    .job ul { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 12px; }
+    .job li { position: relative; padding-left: 22px; color: var(--ink-soft); }
+    .job li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+    .job li strong { color: var(--ink); }
+
+    /* Skills + education */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+    .panel h3 { margin: 0 0 20px; font-size: 1.2rem; }
+    .skill-group { margin-bottom: 20px; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-group .name { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .edu-school { font-size: 1.25rem; font-weight: 800; letter-spacing: -.01em; }
+    .edu-degree { color: var(--accent); font-weight: 600; margin: 4px 0 4px; }
+    .edu-date { color: var(--muted); font-size: .9rem; margin-bottom: 20px; }
+    .cert { display: flex; gap: 14px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+    .cert .icon { margin: 0; width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; }
+    .cert .t { font-weight: 600; }
+    .cert .s { color: var(--muted); font-size: .9rem; }
+
+    /* Contact */
+    .cta { background: var(--dark); color: var(--dark-ink); padding: 112px 0; position: relative; overflow: hidden; }
+    .cta::before {
+      content: ""; position: absolute; width: 640px; height: 640px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,90,31,.28), transparent 65%);
+      bottom: -320px; left: 50%; transform: translateX(-50%);
+    }
+    .cta .wrap { position: relative; text-align: center; }
+    .cta h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); letter-spacing: -.035em; line-height: 1.08; margin: 0 auto 20px; max-width: 760px; font-weight: 800; }
+    .cta p { color: var(--dark-muted); font-size: 1.15rem; margin: 0 auto 36px; max-width: 560px; }
+    .cta .hero-cta { justify-content: center; }
+    .cta .btn-ghost { color: var(--dark-ink); border-color: #5a4a4a; }
+    .cta .btn-ghost:hover { background: var(--dark-ink); color: var(--ink); border-color: var(--dark-ink); }
+
+    footer { background: var(--dark); color: var(--dark-muted); border-top: 1px solid #3d3030; font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; height: 72px; flex-wrap: wrap; gap: 12px; }
+    footer a:hover { color: var(--accent); }
+    footer .f-links { display: flex; gap: 24px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .pillars, .two-col { grid-template-columns: 1fr; }
+      .project { grid-template-columns: 1fr; }
+      .project-visual { order: -1; padding: 32px 24px; }
+      .job { grid-template-columns: 1fr; gap: 16px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      .nav-links a:not(.btn) { display: none; }
+      .hero { padding: 64px 0 48px; }
+      section { padding: 72px 0; }
+      .project-body, .job, .pillar, .panel { padding: 26px; }
+      .stat { padding: 22px 18px; }
+      .stat .num { font-size: 1.8rem; }
+      footer .wrap { height: auto; padding-top: 20px; padding-bottom: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="logo-mark">OM</span>Omar Mousli</a>
+    <div class="nav-links">
+      <a href="#background">Background</a>
+      <a href="#work">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">Education</a>
+      <a href="#contact" class="btn btn-primary btn-sm">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>BSc Computer Science &middot; Western University &middot; Graduating Dec 2026</div>
+    <h1>Hi, I'm Omar. I work in <span class="hl">business analysis and software engineering.</span></h1>
+    <p class="lead">I'm a Computer Science student in London, Ontario. I've interned as a business analyst at Deloitte and as a software engineering intern at Sitech, and I build full-stack projects in my spare time.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">View projects
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/omarmousli/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/M0usli" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="label">Internships (Deloitte, Sitech)</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Featured projects</div></div>
+      <div class="stat"><div class="num">2</div><div class="label">Certifications (ServiceNow CSA, Deloitte BA)</div></div>
+      <div class="stat"><div class="num">Dec <span>'26</span></div><div class="label">Expected graduation</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="alt" id="background">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Background</div>
+      <h2>What I've worked on.</h2>
+      <p>My experience is split between business analysis and software development.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H5a2 2 0 0 0-2 2v7h18v-7a2 2 0 0 0-2-2h-4"/><rect x="9" y="3" width="6" height="12" rx="1"/><path d="M12 7h.01"/></svg></div>
+        <h3>Business analysis</h3>
+        <p>At Deloitte I wrote user stories and acceptance criteria in Jira and worked with stakeholders during backlog refinement. I've also written BRDs and SRSs.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
+        <h3>Software development</h3>
+        <p>I built Django pages at Sitech. In my own projects I use Python and FastAPI for back ends, Next.js and React for front ends, and PostgreSQL with Docker.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10.01-3-3"/></svg></div>
+        <h3>Testing &amp; Agile</h3>
+        <p>I write automated tests with pytest and Vitest, run them in GitHub Actions, and have worked in Agile sprints with UAT sign-off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Projects</div>
+      <h2>Things I've built.</h2>
+      <p>Personal and client projects, with links to the code where it's public.</p>
+    </div>
+
+    <article class="project">
+      <div class="project-body">
+        <div class="project-tag">Full stack &middot; Sep&ndash;Oct 2026</div>
+        <h3>SplitPay: wallet &amp; bill-split app</h3>
+        <p>A web app where roommates scan a receipt, split it item by item, and pay each other from a wallet.</p>
+        <ul class="checks">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reads receipt photos with OpenCV, Tesseract OCR and an LLM</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Double-entry ledger, idempotent payments and simulated KYC limits</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>67 REST endpoints and 888 automated tests in CI</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
+        <a href="https://github.com/M0usli/splitpay" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
+      </div>
+      <div class="project-visual">
+        <div class="window">
+          <div class="window-bar"><i></i><i></i><i></i></div>
+          <div class="window-body">
+            <div class="row"><span class="k">Groceries &middot; 3 roommates</span><span class="v">$84.27</span></div>
+            <div class="row"><span class="k">Your share (tax split)</span><span class="v acc">$28.09</span></div>
+            <div class="row"><span class="k">Payment status</span><span class="v ok">Sent &check;</span></div>
+            <div class="row"><span class="k">Test suite</span><span class="v ok">888 passed</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-body">
+        <div class="project-tag">AI &middot; 2026</div>
+        <h3>Cite: research assistant with sources</h3>
+        <p>An agentic research assistant where each answer links back to the source it came from.</p>
+        <ul class="checks">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tool-use loop written by hand on the Claude API</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Document search with pgvector in PostgreSQL</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>FastAPI back end with a Next.js interface</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">pgvector</span><span class="chip">Next.js</span><span class="chip">LLMs</span></div>
+        <a href="https://github.com/M0usli/cite-agent" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
+      </div>
+      <div class="project-visual">
+        <div class="window">
+          <div class="window-bar"><i></i><i></i><i></i></div>
+          <div class="window-body mono">
+            <div><b>&gt; ask</b> "What changed in Phase 2?"</div>
+            <div>&nbsp;&nbsp;tool: <span class="s">search_documents</span></div>
+            <div>&nbsp;&nbsp;tool: <span class="s">read_passage</span></div>
+            <div><b>&gt; answer</b> &hellip;must be cleared in real time <span class="s">[1]</span></div>
+            <div>&nbsp;&nbsp;<span class="s">[1]</span> source.pdf, p.14</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-body">
+        <div class="project-tag">Client project &middot; May&ndash;Jun 2026</div>
+        <h3>Barber shop booking system</h3>
+        <p>A self-serve booking site for a local barber shop that replaced booking by phone.</p>
+        <ul class="checks">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Interviewed the owner and mapped the existing booking process</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wrote a BRD with 8+ user stories, then built it in React and Firebase</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Booking takes under 2 minutes instead of about 10</li>
+        </ul>
+        <div class="chips"><span class="chip">React</span><span class="chip">Firebase</span><span class="chip">BRD</span><span class="chip">UAT</span></div>
+      </div>
+      <div class="project-visual">
+        <div class="window">
+          <div class="window-bar"><i></i><i></i><i></i></div>
+          <div class="window-body">
+            <div class="row"><span class="k">Booking time, before</span><span class="v">~10 min</span></div>
+            <div class="row"><span class="k">Booking time, after</span><span class="v acc">&lt; 2 min</span></div>
+            <div class="row"><span class="k">Double-bookings</span><span class="v ok">0</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="alt" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Experience</div>
+      <h2>Work experience.</h2>
+    </div>
+    <div class="timeline">
+      <div class="job">
+        <div class="job-meta">
+          <div class="co">Deloitte</div>
+          <div class="title">Business Analysis Intern</div>
+          <div class="when">May 2025 &ndash; Sep 2025</div>
+        </div>
+        <ul>
+          <li>Worked on a ZATCA Phase 2 e-invoicing project. Translated 12+ compliance rules into Jira acceptance criteria and reviewed them with 5+ stakeholders before each sprint; no rework was needed across 2 sprints.</li>
+          <li>Wrote 10+ user stories and got written client sign-off within 48 hours of each backlog refinement.</li>
+          <li>Tracked dependencies between teams and raised 5+ delays early in daily check-ins.</li>
+          <li>Completed Deloitte's Business Analysis certification (40+ hours) in my first month.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-meta">
+          <div class="co">Sitech</div>
+          <div class="title">Software Engineering Intern</div>
+          <div class="when">Aug 2023 &ndash; Nov 2023</div>
+        </div>
+        <ul>
+          <li>Built 3 client-facing web pages in Python, Django, HTML and CSS, from first draft through QA sign-off.</li>
+          <li>Helped write and review BRDs and SRSs before development started.</li>
+          <li>Built a Django dashboard that shows 30 client records in one place for internal staff.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Education</div>
+      <h2>Education &amp; skills.</h2>
+    </div>
+    <div class="two-col">
+      <div class="panel">
+        <div class="edu-school">University of Western Ontario</div>
+        <div class="edu-degree">Bachelor of Science, Computer Science</div>
+        <div class="edu-date">London, Ontario &middot; Expected December 2026</div>
+        <div class="cert">
+          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></svg></div>
+          <div><div class="t">ServiceNow Certified System Administrator</div><div class="s">CSA</div></div>
+        </div>
+        <div class="cert">
+          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></svg></div>
+          <div><div class="t">Deloitte Business Analysis Certification</div><div class="s">40+ hours</div></div>
+        </div>
+        <div class="cert">
+          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+          <div><div class="t">Relevant coursework</div><div class="s">Data Structures &amp; Algorithms, Operating Systems, OOP, Databases, Software Engineering</div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Skills</h3>
+        <div class="skill-group">
+          <div class="name">Languages</div>
+          <div class="chips"><span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">C/C++</span><span class="chip">SQL</span><span class="chip">HTML/CSS</span></div>
+        </div>
+        <div class="skill-group">
+          <div class="name">Frameworks &amp; tools</div>
+          <div class="chips"><span class="chip">FastAPI</span><span class="chip">Django</span><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">ServiceNow</span></div>
+        </div>
+        <div class="skill-group">
+          <div class="name">Business analysis</div>
+          <div class="chips"><span class="chip">Requirements elicitation</span><span class="chip">User stories</span><span class="chip">BRD / SRS</span><span class="chip">Gap analysis</span><span class="chip">Process mapping</span><span class="chip">UAT</span><span class="chip">Agile / Scrum</span><span class="chip">Jira</span><span class="chip">Confluence</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>The easiest way to reach me is by email. I'm happy to share my resume or talk through any of these projects.</p>
+    <div class="hero-cta">
+      <a href="mailto:omarmousli04@gmail.com" class="btn btn-primary">omarmousli04@gmail.com</a>
+      <a href="https://www.linkedin.com/in/omarmousli/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Omar Mousli &middot; London, Ontario</span>
+    <div class="f-links">
+      <a href="https://github.com/M0usli" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/omarmousli/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:omarmousli04@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
